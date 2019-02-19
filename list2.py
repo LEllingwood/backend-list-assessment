@@ -31,12 +31,18 @@ def remove_adjacent(nums):
 # Hint: Don't use `sort` or `sorted` -- they are not linear time.
 def linear_merge(list1, list2):
     """Your code goes here.  Edit this docstring."""
-    merged_list = list1 + list2
-    merged_list.sort()
-    return merged_list
+    merged_list = []
 
-
-
+    while list1 and list2:
+        if list1[0] <= list2[0]:
+            low_number = list1.pop(0)
+            merged_list.append(low_number)
+        elif list2[0] < list1[0]:
+            low_number = list2.pop(0)
+            merged_list.append(low_number)
+    
+    return merged_list + list1 + list2
+            
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
